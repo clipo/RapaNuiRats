@@ -1,0 +1,16 @@
+# Rapa Nui Ecological Simulation Requirements
+# Python dependencies for rat population dynamics and palm forest modeling
+
+# Core scientific computing
+numpy>=1.24.0,<2.0.0
+
+# Plotting and visualization
+matplotlib>=3.7.0,<4.0.0
+
+# Scientific computing and ODE integration
+scipy>=1.10.0,<2.0.0
+
+# Optional but recommended for better performance
+# Uncomment if needed:
+# ipython>=8.0.0  # For interactive development
+# jupyter>=1.0.0  # For notebook development
