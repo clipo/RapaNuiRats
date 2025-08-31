@@ -227,9 +227,12 @@ class RapaNuiEcosystem:
 
         return t, rats, mature_palms, young_palms, total_palms, humans, mature_avg_age
 
-    def plot_results(self, t, rats, mature_palms, young_palms, total_palms, humans, mature_avg_age):
+    def plot_results(self, t, rats, mature_palms, young_palms, total_palms, humans, mature_avg_age, scenario_label="rats_humans"):
         """
         Create comprehensive visualization of simulation results and save as separate files.
+        
+        Parameters:
+        scenario_label: String label for the scenario ("rats_humans" or "rats_only")
         """
         # Convert time to CE dates for historical context
         dates = 1200 + t
@@ -251,8 +254,8 @@ class RapaNuiEcosystem:
         ax1.set_ylim(0, max(total_palms / 1000) * 1.1)
 
         # Save Figure 1
-        fig1.savefig('rapa_nui_palm_decline.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig1.savefig('rapa_nui_palm_decline.png', format='png', dpi=600, bbox_inches='tight')
+        fig1.savefig(f'../figures/{scenario_label}_palm_decline.pdf', format='pdf', dpi=600, bbox_inches='tight')
+        fig1.savefig(f'../figures/{scenario_label}_palm_decline.png', format='png', dpi=600, bbox_inches='tight')
 
         # Figure 2: Rat population dynamics
         fig2, ax2 = plt.subplots(1, 1, figsize=(10, 8))
@@ -264,8 +267,8 @@ class RapaNuiEcosystem:
         ax2.legend()
 
         # Save Figure 2
-        fig2.savefig('rapa_nui_rat_population.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig2.savefig('rapa_nui_rat_population.png', format='png', dpi=600, bbox_inches='tight')
+        fig2.savefig(f'../figures/{scenario_label}_rat_population.pdf', format='pdf', dpi=600, bbox_inches='tight')
+        fig2.savefig(f'../figures/{scenario_label}_rat_population.png', format='png', dpi=600, bbox_inches='tight')
 
         # Figure 3: Human population growth
         fig3, ax3 = plt.subplots(1, 1, figsize=(10, 8))
@@ -277,8 +280,8 @@ class RapaNuiEcosystem:
         ax3.legend()
 
         # Save Figure 3
-        fig3.savefig('rapa_nui_human_population.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig3.savefig('rapa_nui_human_population.png', format='png', dpi=600, bbox_inches='tight')
+        fig3.savefig(f'../figures/{scenario_label}_human_population.pdf', format='pdf', dpi=600, bbox_inches='tight')
+        fig3.savefig(f'../figures/{scenario_label}_human_population.png', format='png', dpi=600, bbox_inches='tight')
 
         # Figure 4: Comparative population dynamics (normalized)
         fig4, ax4 = plt.subplots(1, 1, figsize=(10, 8))
@@ -296,8 +299,8 @@ class RapaNuiEcosystem:
         ax4.set_ylim(0, 1.1)
 
         # Save Figure 4
-        fig4.savefig('rapa_nui_comparative_dynamics.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig4.savefig('rapa_nui_comparative_dynamics.png', format='png', dpi=600, bbox_inches='tight')
+        fig4.savefig(f'../figures/{scenario_label}_comparative_dynamics.pdf', format='pdf', dpi=600, bbox_inches='tight')
+        fig4.savefig(f'../figures/{scenario_label}_comparative_dynamics.png', format='png', dpi=600, bbox_inches='tight')
 
         # Figure 5: Rats and Trees (new figure without humans)
         fig5, ax5 = plt.subplots(1, 1, figsize=(10, 8))
@@ -324,8 +327,8 @@ class RapaNuiEcosystem:
         ax5.legend(lines1 + lines2, labels1 + labels2, loc='center right')
 
         # Save Figure 5
-        fig5.savefig('rapa_nui_rats_vs_trees.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig5.savefig('rapa_nui_rats_vs_trees.png', format='png', dpi=600, bbox_inches='tight')
+        fig5.savefig(f'../figures/{scenario_label}_rats_vs_trees.pdf', format='pdf', dpi=600, bbox_inches='tight')
+        fig5.savefig(f'../figures/{scenario_label}_rats_vs_trees.png', format='png', dpi=600, bbox_inches='tight')
 
         # Figure 6: Palm Age Dynamics (new figure showing aging effect)
         fig6, ax6 = plt.subplots(1, 1, figsize=(10, 8))
@@ -355,8 +358,8 @@ class RapaNuiEcosystem:
         ax6.legend(lines1 + lines2, labels1 + labels2, loc='center right')
 
         # Save Figure 6
-        fig6.savefig('rapa_nui_palm_aging.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig6.savefig('rapa_nui_palm_aging.png', format='png', dpi=600, bbox_inches='tight')
+        fig6.savefig(f'../figures/{scenario_label}_palm_aging.pdf', format='pdf', dpi=600, bbox_inches='tight')
+        fig6.savefig(f'../figures/{scenario_label}_palm_aging.png', format='png', dpi=600, bbox_inches='tight')
 
         # Figure 7: Seasonal Rat Dynamics - Zoomed view (first 20 years)
         fig7, (ax7a, ax7b) = plt.subplots(2, 1, figsize=(12, 10))
@@ -391,8 +394,8 @@ class RapaNuiEcosystem:
         ax7b.grid(True, alpha=0.3)
 
         # Save Figure 7
-        fig7.savefig('rapa_nui_seasonal_rat_dynamics.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig7.savefig('rapa_nui_seasonal_rat_dynamics.png', format='png', dpi=600, bbox_inches='tight')
+        fig7.savefig(f'../figures/{scenario_label}_seasonal_rat_dynamics.pdf', format='pdf', dpi=600, bbox_inches='tight')
+        fig7.savefig(f'../figures/{scenario_label}_seasonal_rat_dynamics.png', format='png', dpi=600, bbox_inches='tight')
 
         # Figure 8: Carrying Capacity vs Population Tracking
         fig8, ax8 = plt.subplots(1, 1, figsize=(10, 8))
@@ -426,8 +429,8 @@ class RapaNuiEcosystem:
         ax8.legend(lines1 + lines2, labels1 + labels2, loc='upper right')
 
         # Save Figure 8
-        fig8.savefig('rapa_nui_carrying_capacity_tracking.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig8.savefig('rapa_nui_carrying_capacity_tracking.png', format='png', dpi=600, bbox_inches='tight')
+        fig8.savefig(f'../figures/{scenario_label}_carrying_capacity_tracking.pdf', format='pdf', dpi=600, bbox_inches='tight')
+        fig8.savefig(f'../figures/{scenario_label}_carrying_capacity_tracking.png', format='png', dpi=600, bbox_inches='tight')
 
         # Figure 9: Seasonal Rat Dynamics - Later Period (1400-1500 CE)
         fig9, (ax9a, ax9b) = plt.subplots(2, 1, figsize=(12, 10))
@@ -463,22 +466,22 @@ class RapaNuiEcosystem:
         ax9b.grid(True, alpha=0.3)
 
         # Save Figure 9
-        fig9.savefig('rapa_nui_late_seasonal_dynamics.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig9.savefig('rapa_nui_late_seasonal_dynamics.png', format='png', dpi=600, bbox_inches='tight')
+        fig9.savefig(f'../figures/{scenario_label}_late_seasonal_dynamics.pdf', format='pdf', dpi=600, bbox_inches='tight')
+        fig9.savefig(f'../figures/{scenario_label}_late_seasonal_dynamics.png', format='png', dpi=600, bbox_inches='tight')
 
         # Display all figures
         plt.show()
 
-        print("\nFigures saved as:")
-        print("- rapa_nui_palm_decline.pdf/.png")
-        print("- rapa_nui_rat_population.pdf/.png")
-        print("- rapa_nui_human_population.pdf/.png")
-        print("- rapa_nui_comparative_dynamics.pdf/.png")
-        print("- rapa_nui_rats_vs_trees.pdf/.png")
-        print("- rapa_nui_palm_aging.pdf/.png")
-        print("- rapa_nui_seasonal_rat_dynamics.pdf/.png")
-        print("- rapa_nui_carrying_capacity_tracking.pdf/.png")
-        print("- rapa_nui_late_seasonal_dynamics.pdf/.png")
+        print(f"\nFigures saved in ../figures/ directory with prefix '{scenario_label}_':")
+        print(f"- {scenario_label}_palm_decline.pdf/.png")
+        print(f"- {scenario_label}_rat_population.pdf/.png")
+        print(f"- {scenario_label}_human_population.pdf/.png")
+        print(f"- {scenario_label}_comparative_dynamics.pdf/.png")
+        print(f"- {scenario_label}_rats_vs_trees.pdf/.png")
+        print(f"- {scenario_label}_palm_aging.pdf/.png")
+        print(f"- {scenario_label}_seasonal_rat_dynamics.pdf/.png")
+        print(f"- {scenario_label}_carrying_capacity_tracking.pdf/.png")
+        print(f"- {scenario_label}_late_seasonal_dynamics.pdf/.png")
 
         # Calculate seasonal variation for both early and late periods
 
@@ -574,57 +577,50 @@ class RapaNuiEcosystem:
         # Reset matplotlib parameters
         plt.rcParams.update(plt.rcParamsDefault)
 
-    def run_comparison_simulation(self, years_humans=522, max_years_rats=2000):
+    def run_comparison_simulation(self, years=522):
         """
         Run comparative simulation: Rats-only vs Rats+Humans scenarios
-        Rats-only runs until extinction or max_years, Rats+Humans runs to European contact
+        Both scenarios run to European contact (1722 CE = 522 years)
+        Saves separate figure sets for each scenario
         """
         print("Running comparative simulation...")
-        print("Scenario 1: Rats only (no human forest clearing) - running until palm extinction")
-
-        # Run rats-only scenario until extinction or maximum years
+        print("Both scenarios will run to European contact (1722 CE)")
+        
+        # Run rats-only scenario to 1722
+        print(f"\nScenario 1: Rats only (no human forest clearing) - running to 1722 CE ({years} years)")
         self.enable_human_clearing = False
-        extinction_threshold = 50  # Consider extinct below 50 trees
+        t_rats, rats_rats, mature_palms_rats, young_palms_rats, total_palms_rats, humans_rats, mature_avg_age_rats = self.run_simulation(years)
+        
+        # Save rats-only figures
+        print("\nGenerating figures for rats-only scenario...")
+        self.plot_results(t_rats, rats_rats, mature_palms_rats, young_palms_rats, 
+                         total_palms_rats, humans_rats, mature_avg_age_rats, 
+                         scenario_label="rats_only")
 
-        # Start with shorter simulation and extend if needed
-        current_years = 1000
-        while current_years <= max_years_rats:
-            t_rats, rats_rats, mature_palms_rats, young_palms_rats, total_palms_rats, humans_rats, mature_avg_age_rats = self.run_simulation(
-                current_years)
-
-            # Check if extinction reached
-            if total_palms_rats[-1] < extinction_threshold:
-                print(f"Palm extinction reached after {current_years} years ({1200 + current_years} CE)")
-                break
-            elif current_years >= max_years_rats:
-                print(f"Maximum simulation time reached ({max_years_rats} years)")
-                break
-            else:
-                print(
-                    f"After {current_years} years: {int(total_palms_rats[-1]):,} palms remaining - extending simulation...")
-                current_years += 500  # Extend by 500 years and try again
-
-        print(f"Scenario 2: Rats + humans (with forest clearing) - running to European contact ({years_humans} years)")
-
-        # Run rats+humans scenario for historical period
+        print(f"\nScenario 2: Rats + humans (with forest clearing) - running to 1722 CE ({years} years)")
+        # Run rats+humans scenario for same period
         self.enable_human_clearing = True
-        t_humans, rats_humans, mature_palms_humans, young_palms_humans, total_palms_humans, humans_humans, mature_avg_age_humans = self.run_simulation(
-            years_humans)
+        t_humans, rats_humans, mature_palms_humans, young_palms_humans, total_palms_humans, humans_humans, mature_avg_age_humans = self.run_simulation(years)
+        
+        # Save rats+humans figures
+        print("\nGenerating figures for rats+humans scenario...")
+        self.plot_results(t_humans, rats_humans, mature_palms_humans, young_palms_humans, 
+                         total_palms_humans, humans_humans, mature_avg_age_humans, 
+                         scenario_label="rats_humans")
 
-        # Create comparison plots
+        # Create direct comparison plots
         self.plot_comparison_results(t_rats, rats_rats, total_palms_rats, mature_palms_rats, mature_avg_age_rats,
                                      t_humans, rats_humans, total_palms_humans, mature_palms_humans,
-                                     mature_avg_age_humans,
-                                     humans_humans, extinction_threshold)
+                                     mature_avg_age_humans, humans_humans)
 
         return (t_rats, rats_rats, total_palms_rats, mature_palms_rats, mature_avg_age_rats,
                 t_humans, rats_humans, total_palms_humans, mature_palms_humans, mature_avg_age_humans)
 
     def plot_comparison_results(self, t_rats, rats_rats, total_palms_rats, mature_palms_rats, mature_avg_age_rats,
                                 t_humans, rats_humans, total_palms_humans, mature_palms_humans, mature_avg_age_humans,
-                                humans_humans, extinction_threshold):
+                                humans_humans):
         """
-        Create comparison plots for rats-only vs rats+humans scenarios with different timelines
+        Create direct comparison plots for rats-only vs rats+humans scenarios (both to 1722 CE)
         """
         dates_rats = 1200 + t_rats
         dates_humans = 1200 + t_humans
@@ -634,162 +630,109 @@ class RapaNuiEcosystem:
         plt.rcParams['savefig.dpi'] = 600
         plt.rcParams['savefig.bbox'] = 'tight'
 
-        # Figure 10: Palm Forest Comparison (with different x-axis ranges)
-        fig10, (ax10a, ax10b) = plt.subplots(2, 1, figsize=(14, 10))
+        # Figure 10: Direct Palm Forest Comparison (1200-1722 CE)
+        fig10, ax10 = plt.subplots(1, 1, figsize=(12, 8))
 
-        # Top subplot: Total palm populations
-        ax10a.plot(dates_rats, total_palms_rats / 1000, 'g-', linewidth=3,
+        # Plot both scenarios on same timeline
+        ax10.plot(dates_rats, total_palms_rats / 1000, 'g-', linewidth=3,
                    label='Rats Only', alpha=0.8)
-        ax10a.plot(dates_humans, total_palms_humans / 1000, 'r-', linewidth=3,
+        ax10.plot(dates_humans, total_palms_humans / 1000, 'r-', linewidth=3,
                    label='Rats + Humans', alpha=0.8)
-        ax10a.axhline(y=extinction_threshold / 1000, color='black', linestyle=':',
-                      linewidth=2, label=f'Extinction Threshold ({extinction_threshold} trees)')
-        ax10a.axvline(x=1722, color='blue', linestyle='--', alpha=0.7, label='European Contact (1722 CE)')
-        ax10a.set_ylabel('Total Palm Trees (thousands)')
-        ax10a.set_title('Palm Forest Decline Comparison: Rats Only vs Rats + Humans (Extended Timeline)')
-        ax10a.legend()
-        ax10a.grid(True, alpha=0.3)
-        ax10a.set_ylim(0, max(max(total_palms_rats), max(total_palms_humans)) / 1000 * 1.1)
+        ax10.axvline(x=1722, color='blue', linestyle='--', alpha=0.7, label='European Contact (1722 CE)')
+        ax10.set_xlabel('Year (CE)')
+        ax10.set_ylabel('Total Palm Trees (thousands)')
+        ax10.set_title('Palm Forest Decline Comparison: Rats Only vs Rats + Humans (1200-1722 CE)')
+        ax10.legend()
+        ax10.grid(True, alpha=0.3)
+        ax10.set_xlim(1200, 1750)
+        ax10.set_ylim(0, max(max(total_palms_rats), max(total_palms_humans)) / 1000 * 1.1)
 
-        # Bottom subplot: Zoomed view to 1722 CE for direct comparison
-        human_end_idx = len(dates_humans) - 1
-        rat_1722_idx = np.argmin(np.abs(dates_rats - 1722))
+        fig10.savefig('../figures/comparison_palm_decline.pdf', format='pdf', dpi=600, bbox_inches='tight')
+        fig10.savefig('../figures/comparison_palm_decline.png', format='png', dpi=600, bbox_inches='tight')
 
-        ax10b.plot(dates_rats[:rat_1722_idx + 1], total_palms_rats[:rat_1722_idx + 1] / 1000, 'g-', linewidth=3,
-                   label='Rats Only (to 1722)', alpha=0.8)
-        ax10b.plot(dates_humans, total_palms_humans / 1000, 'r-', linewidth=3,
-                   label='Rats + Humans', alpha=0.8)
-        ax10b.axhline(y=extinction_threshold / 1000, color='black', linestyle=':',
-                      linewidth=2, label=f'Extinction Threshold ({extinction_threshold} trees)')
-        ax10b.axvline(x=1722, color='blue', linestyle='--', alpha=0.7, label='European Contact')
-        ax10b.set_xlabel('Year (CE)')
-        ax10b.set_ylabel('Total Palm Trees (thousands)')
-        ax10b.set_title('Palm Decline Comparison: Historical Period (1200-1722 CE)')
-        ax10b.legend()
-        ax10b.grid(True, alpha=0.3)
-        ax10b.set_xlim(1200, 1750)
+        # Figure 11: Rat Population Comparison
+        fig11, ax11 = plt.subplots(1, 1, figsize=(12, 8))
 
-        fig10.savefig('rapa_nui_palm_comparison_extended.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig10.savefig('rapa_nui_palm_comparison_extended.png', format='png', dpi=600, bbox_inches='tight')
-
-        # Figure 11: Full Timeline Extinction Analysis
-        fig11, ax11 = plt.subplots(1, 1, figsize=(14, 8))
-
-        ax11.plot(dates_rats, total_palms_rats / 1000, 'g-', linewidth=3,
-                  label='Rats Only - Full Timeline', alpha=0.8)
-        ax11.plot(dates_humans, total_palms_humans / 1000, 'r-', linewidth=3,
-                  label='Rats + Humans - Historical Timeline', alpha=0.8)
-        ax11.axhline(y=extinction_threshold / 1000, color='black', linestyle=':',
-                     linewidth=2, label=f'Extinction Threshold ({extinction_threshold} trees)')
+        ax11.plot(dates_rats, rats_rats / 1000, 'g-', linewidth=3,
+                  label='Rats Only Scenario', alpha=0.8)
+        ax11.plot(dates_humans, rats_humans / 1000, 'r-', linewidth=3,
+                  label='Rats + Humans Scenario', alpha=0.8)
         ax11.axvline(x=1722, color='blue', linestyle='--', alpha=0.7, label='European Contact (1722 CE)')
-
-        # Mark extinction point if reached
-        if total_palms_rats[-1] <= extinction_threshold:
-            extinction_year = dates_rats[-1]
-            ax11.axvline(x=extinction_year, color='red', linestyle=':', alpha=0.7,
-                         label=f'Palm Extinction ({int(extinction_year)} CE)')
-
         ax11.set_xlabel('Year (CE)')
-        ax11.set_ylabel('Total Palm Trees (thousands)')
-        ax11.set_title('Complete Ecological Collapse Timeline: Rats-Only vs Rats+Humans')
+        ax11.set_ylabel('Rat Population (thousands)')
+        ax11.set_title('Rat Population Dynamics Comparison (1200-1722 CE)')
         ax11.legend()
         ax11.grid(True, alpha=0.3)
-        ax11.set_ylim(0, max(max(total_palms_rats), max(total_palms_humans)) / 1000 * 1.1)
+        ax11.set_xlim(1200, 1750)
 
-        fig11.savefig('rapa_nui_extinction_timeline.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig11.savefig('rapa_nui_extinction_timeline.png', format='png', dpi=600, bbox_inches='tight')
+        fig11.savefig('../figures/comparison_rat_population.pdf', format='pdf', dpi=600, bbox_inches='tight')
+        fig11.savefig('../figures/comparison_rat_population.png', format='png', dpi=600, bbox_inches='tight')
 
-        # Figure 12: Rat Population Comparison (different timelines)
-        fig12, ax12 = plt.subplots(1, 1, figsize=(14, 8))
+        # Figure 12: Palm Decline with Human Population
+        fig12, ax12 = plt.subplots(1, 1, figsize=(12, 8))
 
-        ax12.plot(dates_rats, rats_rats / 1000, 'g-', linewidth=3,
-                  label='Rats Only Scenario', alpha=0.8)
-        ax12.plot(dates_humans, rats_humans / 1000, 'r-', linewidth=3,
-                  label='Rats + Humans Scenario', alpha=0.8)
-        ax12.axvline(x=1722, color='blue', linestyle='--', alpha=0.7, label='European Contact (1722 CE)')
-        ax12.set_xlabel('Year (CE)')
-        ax12.set_ylabel('Rat Population (thousands)')
-        ax12.set_title('Rat Population Dynamics: Extended Timeline Comparison')
-        ax12.legend()
-        ax12.grid(True, alpha=0.3)
-
-        fig12.savefig('rapa_nui_rat_comparison_extended.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig12.savefig('rapa_nui_rat_comparison_extended.png', format='png', dpi=600, bbox_inches='tight')
-
-        # Figure 13: Palm Decline with Human Population (Historical Period)
-        fig13, ax13 = plt.subplots(1, 1, figsize=(14, 8))
-
-        # Plot palm populations (zoomed to historical period for comparison)
-        rat_1722_idx = np.argmin(np.abs(dates_rats - 1722))
-
-        ax13.plot(dates_rats[:rat_1722_idx + 1], total_palms_rats[:rat_1722_idx + 1] / 1000, 'g-', linewidth=3,
-                  label='Rats Only (to 1722)', alpha=0.8)
-        ax13.plot(dates_humans, total_palms_humans / 1000, 'r-', linewidth=3,
+        # Plot palm populations
+        ax12.plot(dates_rats, total_palms_rats / 1000, 'g-', linewidth=3,
+                  label='Rats Only', alpha=0.8)
+        ax12.plot(dates_humans, total_palms_humans / 1000, 'r-', linewidth=3,
                   label='Rats + Humans', alpha=0.8)
-        ax13.axhline(y=extinction_threshold / 1000, color='black', linestyle=':',
-                     linewidth=2, label=f'Extinction Threshold ({extinction_threshold} trees)')
-        ax13.axvline(x=1722, color='blue', linestyle='--', alpha=0.7, label='European Contact')
+        ax12.axvline(x=1722, color='blue', linestyle='--', alpha=0.7, label='European Contact')
 
-        ax13.set_xlabel('Year (CE)')
-        ax13.set_ylabel('Total Palm Trees (thousands)', color='black')
-        ax13.set_title('Palm Forest Decline with Human Population Growth (1200-1722 CE)')
-        ax13.grid(True, alpha=0.3)
-        ax13.set_xlim(1200, 1750)
-        ax13.set_ylim(0, max(max(total_palms_rats[:rat_1722_idx + 1]), max(total_palms_humans)) / 1000 * 1.1)
+        ax12.set_xlabel('Year (CE)')
+        ax12.set_ylabel('Total Palm Trees (thousands)', color='black')
+        ax12.set_title('Palm Forest Decline with Human Population Growth (1200-1722 CE)')
+        ax12.grid(True, alpha=0.3)
+        ax12.set_xlim(1200, 1750)
+        ax12.set_ylim(0, max(max(total_palms_rats), max(total_palms_humans)) / 1000 * 1.1)
 
         # Add human population on secondary y-axis
-        ax13_human = ax13.twinx()
-        # Calculate human population for rats-only scenario timeframe (same logistic growth)
-        humans_extended = [self.human_population(time) for time in t_rats[:rat_1722_idx + 1]]
-        ax13_human.plot(dates_rats[:rat_1722_idx + 1], humans_extended, 'b-', linewidth=2.5,
+        ax12_human = ax12.twinx()
+        ax12_human.plot(dates_humans, humans_humans, 'b-', linewidth=2.5,
                         label='Human Population', alpha=0.8)
-        ax13_human.set_ylabel('Human Population', color='blue')
-        ax13_human.tick_params(axis='y', labelcolor='blue')
-        ax13_human.set_ylim(0, max(max(humans_extended), max(humans_humans)) * 1.1)
+        ax12_human.set_ylabel('Human Population', color='blue')
+        ax12_human.tick_params(axis='y', labelcolor='blue')
+        ax12_human.set_ylim(0, max(humans_humans) * 1.1)
 
         # Combine legends
-        lines1, labels1 = ax13.get_legend_handles_labels()
-        lines2, labels2 = ax13_human.get_legend_handles_labels()
-        ax13.legend(lines1 + lines2, labels1 + labels2, loc='center right')
+        lines1, labels1 = ax12.get_legend_handles_labels()
+        lines2, labels2 = ax12_human.get_legend_handles_labels()
+        ax12.legend(lines1 + lines2, labels1 + labels2, loc='center right')
 
-        fig13.savefig('rapa_nui_palm_decline_with_humans.pdf', format='pdf', dpi=600, bbox_inches='tight')
-        fig13.savefig('rapa_nui_palm_decline_with_humans.png', format='png', dpi=600, bbox_inches='tight')
+        fig12.savefig('../figures/comparison_palm_decline_with_humans.pdf', format='pdf', dpi=600, bbox_inches='tight')
+        fig12.savefig('../figures/comparison_palm_decline_with_humans.png', format='png', dpi=600, bbox_inches='tight')
 
         plt.show()
 
         # Calculate comparative statistics
         self.print_comparison_statistics(t_rats, total_palms_rats, rats_rats, mature_avg_age_rats,
                                          t_humans, total_palms_humans, rats_humans, mature_avg_age_humans,
-                                         humans_humans, extinction_threshold)
+                                         humans_humans)
 
-        print("\nExtended comparison figures saved as:")
-        print("- rapa_nui_palm_comparison_extended.pdf/.png")
-        print("- rapa_nui_extinction_timeline.pdf/.png")
-        print("- rapa_nui_rat_comparison_extended.pdf/.png")
-        print("- rapa_nui_palm_decline_with_humans.pdf/.png")
+        print("\nComparison figures saved in ../figures/ directory:")
+        print("- comparison_palm_decline.pdf/.png")
+        print("- comparison_rat_population.pdf/.png")
+        print("- comparison_palm_decline_with_humans.pdf/.png")
 
         # Reset matplotlib parameters
         plt.rcParams.update(plt.rcParamsDefault)
 
     def print_comparison_statistics(self, t_rats, total_palms_rats, rats_rats, mature_avg_age_rats,
                                     t_humans, total_palms_humans, rats_humans, mature_avg_age_humans,
-                                    humans_humans, extinction_threshold):
+                                    humans_humans):
         """
-        Print detailed comparison statistics between scenarios with different timelines
+        Print detailed comparison statistics between scenarios (both to 1722 CE)
         """
         dates_rats = 1200 + t_rats
         dates_humans = 1200 + t_humans
 
         print("\n" + "=" * 80)
-        print("EXTENDED COMPARATIVE ECOLOGICAL COLLAPSE ANALYSIS")
+        print("COMPARATIVE ECOLOGICAL ANALYSIS (1200-1722 CE)")
         print("=" * 80)
 
         # Timeline information
-        rats_timeline = int(t_rats[-1])
-        humans_timeline = int(t_humans[-1])
-        print(f"SIMULATION TIMELINES:")
-        print(f"Rats Only scenario: {rats_timeline} years (1200-{int(dates_rats[-1])} CE)")
-        print(f"Rats + Humans scenario: {humans_timeline} years (1200-{int(dates_humans[-1])} CE)")
+        timeline = int(t_rats[-1])
+        print(f"SIMULATION TIMELINE: {timeline} years (1200-1722 CE)")
+        print("Both scenarios run to European contact")
 
         # Final outcomes
         final_palms_rats = total_palms_rats[-1]
@@ -797,18 +740,18 @@ class RapaNuiEcosystem:
         final_rats_rats = rats_rats[-1]
         final_rats_humans = rats_humans[-1]
 
-        print(f"\nFINAL OUTCOMES:")
-        print(f"Rats Only Scenario ({int(dates_rats[-1])} CE):")
-        print(f"  Final palm trees: {final_palms_rats:,.0f} ({final_palms_rats / 15000000 * 100:.4f}% remaining)")
+        print(f"\nFINAL OUTCOMES AT EUROPEAN CONTACT (1722 CE):")
+        print(f"Rats Only Scenario:")
+        print(f"  Final palm trees: {final_palms_rats:,.0f} ({final_palms_rats / 15000000 * 100:.2f}% remaining)")
         print(f"  Final rat population: {final_rats_rats:,.0f}")
-        if final_palms_rats <= extinction_threshold:
-            print(f"  ✓ EXTINCTION ACHIEVED (below {extinction_threshold} trees)")
-        else:
-            print(f"  ⚠ Still above extinction threshold ({extinction_threshold} trees)")
 
-        print(f"Rats + Humans Scenario (1722 CE - European Contact):")
-        print(f"  Final palm trees: {final_palms_humans:,.0f} ({final_palms_humans / 15000000 * 100:.4f}% remaining)")
+        print(f"Rats + Humans Scenario:")
+        print(f"  Final palm trees: {final_palms_humans:,.0f} ({final_palms_humans / 15000000 * 100:.2f}% remaining)")
         print(f"  Final rat population: {final_rats_humans:,.0f}")
+        
+        print(f"\nDifference:")
+        print(f"  Additional palm loss with humans: {final_palms_rats - final_palms_humans:,.0f} trees")
+        print(f"  Percentage difference: {((final_palms_rats - final_palms_humans) / final_palms_rats * 100):.1f}% more loss with humans")
 
         # Peak populations
         peak_rats_rats = max(rats_rats)
@@ -820,56 +763,26 @@ class RapaNuiEcosystem:
         print(f"Rats Only: {peak_rats_rats:,.0f} in year {peak_year_rats}")
         print(f"Rats + Humans: {peak_rats_humans:,.0f} in year {peak_year_humans}")
 
-        # Extinction timeline analysis
-        print(f"\nEXTINCTION ANALYSIS:")
-        extinction_indices_rats = np.where(total_palms_rats <= extinction_threshold)[0]
-        if len(extinction_indices_rats) > 0:
-            extinction_year_rats = int(dates_rats[extinction_indices_rats[0]])
-            extinction_time_rats = extinction_year_rats - 1200
-            print(f"Rats Only - Extinction achieved: {extinction_year_rats} CE ({extinction_time_rats} years)")
-        else:
-            print(f"Rats Only - Extinction NOT achieved in {rats_timeline} years")
 
-        extinction_indices_humans = np.where(total_palms_humans <= extinction_threshold)[0]
-        if len(extinction_indices_humans) > 0:
-            extinction_year_humans = int(dates_humans[extinction_indices_humans[0]])
-            extinction_time_humans = extinction_year_humans - 1200
-            print(f"Rats + Humans - Extinction achieved: {extinction_year_humans} CE ({extinction_time_humans} years)")
-        else:
-            print(f"Rats + Humans - Extinction NOT achieved by European contact")
+        # Timeline analysis - key thresholds
+        thresholds = [10000000, 5000000, 1000000, 100000, 10000]
 
-        # Timeline comparison at European contact (1722 CE)
-        rat_1722_idx = np.argmin(np.abs(dates_rats - 1722))
-        palms_rats_1722 = total_palms_rats[rat_1722_idx]
-        rats_rats_1722 = rats_rats[rat_1722_idx]
-
-        print(f"\nCOMPARISON AT EUROPEAN CONTACT (1722 CE):")
-        print(f"Rats Only at 1722 CE:")
-        print(f"  Palm trees: {palms_rats_1722:,.0f} ({palms_rats_1722 / 15000000 * 100:.4f}% remaining)")
-        print(f"  Rat population: {rats_rats_1722:,.0f}")
-        print(f"Rats + Humans at 1722 CE:")
-        print(f"  Palm trees: {final_palms_humans:,.0f} ({final_palms_humans / 15000000 * 100:.4f}% remaining)")
-        print(f"  Rat population: {final_rats_humans:,.0f}")
-
-        # Timeline analysis - key thresholds up to 1722
-        thresholds = [10000000, 5000000, 1000000, 100000, 10000, 1000]
-
-        print(f"\nFOREST DECLINE TIMELINE COMPARISON (through 1722 CE):")
-        print(f"{'Threshold':>12} {'Rats Only':>12} {'Rats+Humans':>12} {'Difference':>12}")
+        print(f"\nFOREST DECLINE MILESTONES:")
+        print(f"{'Palm Trees':>12} {'Rats Only':>12} {'Rats+Humans':>12} {'Acceleration':>12}")
         print("-" * 52)
 
         for threshold in thresholds:
-            # Rats only scenario (limit to 1722 CE for comparison)
-            rats_1722_indices = np.where((total_palms_rats[:rat_1722_idx + 1] < threshold))[0]
-            rats_year = int(dates_rats[rats_1722_indices[0]]) if len(rats_1722_indices) > 0 else "Never"
+            # Rats only scenario
+            rats_indices = np.where(total_palms_rats < threshold)[0]
+            rats_year = int(dates_rats[rats_indices[0]]) if len(rats_indices) > 0 else "Not reached"
 
             # Rats + humans scenario
             humans_indices = np.where(total_palms_humans < threshold)[0]
-            humans_year = int(dates_humans[humans_indices[0]]) if len(humans_indices) > 0 else "Never"
+            humans_year = int(dates_humans[humans_indices[0]]) if len(humans_indices) > 0 else "Not reached"
 
             # Calculate difference
-            if rats_year != "Never" and humans_year != "Never":
-                difference = f"{rats_year - humans_year:+d} years"
+            if rats_year != "Not reached" and humans_year != "Not reached":
+                difference = f"{humans_year - rats_year:+d} years"
             else:
                 difference = "N/A"
 
@@ -877,38 +790,28 @@ class RapaNuiEcosystem:
 
         # Final assessment
         print(f"\nKEY FINDINGS:")
-
-        # Check sufficiency of rats alone
-        if len(extinction_indices_rats) > 0:
-            extinction_time = extinction_year_rats - 1200
-            print(f"✓ Rats alone ARE sufficient to cause complete extinction")
-            print(f"  Complete extinction timeline: {extinction_time} years ({extinction_year_rats} CE)")
-
-            if len(extinction_indices_humans) > 0:
-                human_acceleration = extinction_time_humans - extinction_time_rats
-                print(f"✓ Humans accelerate extinction by {-human_acceleration} years")
-            else:
-                print(f"✓ Humans would achieve near-extinction much faster than rats alone")
-                print(f"  Human scenario reaches {final_palms_humans:,.0f} trees in 522 years")
-                print(f"  Rat scenario takes {extinction_time} years for complete extinction")
-        else:
-            print(f"⚠ Rats alone may not achieve complete extinction in reasonable time")
-            print(f"  After {rats_timeline} years: {final_palms_rats:,.0f} trees remaining")
-
+        
+        # Compare final states
+        palm_difference_pct = ((final_palms_rats - final_palms_humans) / final_palms_rats * 100)
+        print(f"✓ Human activities accelerate deforestation significantly")
+        print(f"  {palm_difference_pct:.1f}% fewer palms remain when humans are present")
+        
         # Rat population comparison
-        if peak_rats_rats > peak_rats_humans:
-            print(f"✓ Rat populations peak higher without human harvesting pressure")
-            print(f"  Peak difference: {peak_rats_rats - peak_rats_humans:,.0f} more rats in rats-only scenario")
-        else:
-            print(f"⚠ Unexpected: rat populations peak higher with humans present")
-
+        if peak_rats_rats != peak_rats_humans:
+            if peak_rats_rats > peak_rats_humans:
+                print(f"✓ Rat populations peak slightly higher without human harvesting")
+                print(f"  Peak difference: {peak_rats_rats - peak_rats_humans:,.0f} more rats")
+            else:
+                print(f"✓ Human presence affects rat population dynamics")
+                print(f"  Peak difference: {peak_rats_humans - peak_rats_rats:,.0f} more rats with humans")
+        
         # Speed comparison
+        rat_decline_rate = (15000000 - final_palms_rats) / 522  # trees per year
         human_decline_rate = (15000000 - final_palms_humans) / 522  # trees per year
-        if len(extinction_indices_rats) > 0:
-            rat_decline_rate = 15000000 / extinction_time_rats  # trees per year
-            print(f"\nDECLINE RATES:")
-            print(f"Rats + Humans: {human_decline_rate:,.0f} trees lost per year")
-            print(f"Rats Only: {rat_decline_rate:,.0f} trees lost per year")
+        print(f"\nDEFORESTATION RATES (1200-1722 CE):")
+        print(f"Rats Only: {rat_decline_rate:,.0f} trees lost per year")
+        print(f"Rats + Humans: {human_decline_rate:,.0f} trees lost per year")
+        if rat_decline_rate > 0:
             print(f"Human acceleration factor: {human_decline_rate / rat_decline_rate:.1f}x faster")
 
 
@@ -942,14 +845,14 @@ def main():
         print("\n" + "=" * 60)
         print("RUNNING COMPARATIVE ANALYSIS")
         print("=" * 60)
-        ecosystem.run_comparison_simulation(years_humans=522, max_years_rats=2000)
+        ecosystem.run_comparison_simulation(years=522)
     else:
         # Run standard simulation (default)
         print("\n" + "=" * 60)
         print("RUNNING STANDARD SIMULATION (Rats + Humans)")
         print("=" * 60)
         t, rats, mature_palms, young_palms, total_palms, humans, mature_avg_age = ecosystem.run_simulation(years=522)
-        ecosystem.plot_results(t, rats, mature_palms, young_palms, total_palms, humans, mature_avg_age)
+        ecosystem.plot_results(t, rats, mature_palms, young_palms, total_palms, humans, mature_avg_age, scenario_label="rats_humans")
 
 
 if __name__ == "__main__":

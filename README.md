@@ -1,6 +1,10 @@
 # Rapa Nui Rats: Ecological Impact Analysis and Population Modeling
 
-This repository contains code and data supporting the paper "Reassessing the Role of Polynesian Rats (*Rattus exulans*) in Rapa Nui's Deforestation" by Terry L. Hunt and Carl P. Lipo.
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![R 4.3+](https://img.shields.io/badge/R-4.3+-green.svg)](https://www.r-project.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This repository contains computational models and archaeological data analysis supporting the paper "Reassessing the Role of Polynesian Rats (*Rattus exulans*) in Rapa Nui's Deforestation" by Terry L. Hunt and Carl P. Lipo.
 
 ## Overview
 
@@ -25,190 +29,165 @@ The ecological transformation of Rapa Nui (Easter Island) has become one of the 
 - Arguments against rat impact based on ungnawed shell fragments represent a fundamental taphonomic fallacy
 - Mathematical modeling demonstrates that absence of gnaw marks is the expected outcome, not evidence against predation
 
+## Quick Start
+
+### Prerequisites
+- Python 3.8+ with pip
+- R 4.3+ with RStudio (optional)
+- Git for version control
+- 2GB free disk space for simulations
+
+### Installation
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/yourusername/rapanuirats.git
+cd rapanuirats
+```
+
+2. **Set up Python environment**
+```bash
+cd python
+bash setup_env.sh  # Or manually: python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+```
+
+3. **Set up R environment**
+```r
+# In R, from the R-code directory
+setwd("R-code")
+renv::restore()  # Installs exact package versions
+```
+
+### Running the Analyses
+
+#### Generate All Figures (Recommended)
+```bash
+# From python directory
+python rat_simulation.py  # Choose option 2 for comparative analysis
+python RatNutGnawModel.py
+
+# From R-code directory  
+Rscript R-code-for-paper.R
+```
+
+This generates 25+ publication-quality figures in the `figures/` directory.
+
 ## Repository Structure
 
 ```
-RapaNuiRats/
-├── R-code/                    # R analysis of archaeological faunal data
-│   └── *.R                    # Analysis and figure generation scripts
-├── python/                    # Python ecological simulation and taphonomic analysis
+rapanuirats/
+├── python/                    # Python ecological simulations
 │   ├── rat_simulation.py      # Population dynamics model
-│   └── PalmNutGnawModel.py    # Taphonomic analysis of gnaw mark preservation
-├── figures/                   # Generated figures (created when code runs)
-└── README.md                 # This file
+│   ├── RatNutGnawModel.py     # Taphonomic analysis
+│   ├── requirements.txt       # Python dependencies
+│   └── setup_env.sh           # Environment setup script
+├── R-code/                    # R archaeological analysis
+│   ├── R-code-for-paper.R     # Faunal data analysis
+│   ├── renv.lock              # R package versions
+│   └── renv/                  # Project library
+├── figures/                   # Output directory for all visualizations
+├── DEPENDENCIES.md            # Dependency management guide
+├── CLAUDE.md                  # AI assistant configuration
+└── README.md                  # This file
 ```
 
-## Installation
 
-### R Analysis Setup
+## Detailed Usage
 
-1. Install R (version 4.0 or higher) from [CRAN](https://cran.r-project.org/)
+### 1. Ecological Simulation (Python)
 
-2. Install required R packages:
-```r
-install.packages(c("ggplot2", "dplyr", "tidyr", "gridExtra", "scales", "knitr", "svglite"))
-```
-
-3. Navigate to the R-code directory and run the analysis scripts
-
-### Python Setup
-
-1. Ensure Python 3.8+ is installed
-
-2. Create a virtual environment (recommended):
-```bash
-cd python
-python -m venv venv
-
-# On Windows:
-venv\Scripts\activate
-
-# On macOS/Linux:
-source venv/bin/activate
-```
-
-3. Install required packages:
-```bash
-pip install numpy matplotlib scipy
-```
-
-## Usage
-
-### Running the R Analysis
-
-The R code analyzes faunal remains from multiple excavations to test two hypotheses:
-- **Fallback Food Hypothesis**: Rats became increasingly important as other resources depleted
-- **Boom-Bust Hypothesis**: Rats followed invasive species dynamics with explosive growth then decline
-
-```r
-# Set working directory to R-code folder
-setwd("path/to/RapaNuiRats/R-code")
-
-# Run the analysis
-source("your_analysis_script.R")  # Replace with actual script name
-```
-
-**Outputs:**
-- `fig_temporal_decline.png/svg` - Shows 93% decrease in rat abundance over time
-- `fig_all_excavations.png/svg` - Rat patterns across all excavations
-- `fig_variability.png/svg` - Coefficient of variation analysis
-
-### Running the Ecological Simulation
-
-The Python simulation models rat-palm population dynamics from 1200-1722 CE:
+The population dynamics model simulates rat-palm forest interactions from 1200-1722 CE:
 
 ```bash
 cd python
 python rat_simulation.py
 ```
 
-You'll be prompted to choose:
-1. Standard simulation (Rats + Humans)
-2. Comparative simulation (Rats Only vs Rats + Humans)
+**Interactive Options:**
+- Option 1: Standard simulation (Rats + Humans)
+- Option 2: Comparative simulation (generates both scenarios)
 
-**Outputs include:**
-- Palm forest decline trajectories
-- Rat population boom-bust cycles
-- Comparative impacts of rats alone vs. rats + humans
-- Seasonal dynamics and carrying capacity analysis
+**Generated Figures (18 files):**
+- `rats_only_*`: 9 figures showing rats-only scenario
+- `rats_humans_*`: 9 figures showing combined impact
+- `comparison_*`: 3 direct comparison figures
 
-### Running the Taphonomic Analysis
+**Key Parameters:**
+- Initial palm forest: 15 million trees
+- Rat growth rate: 2.5 (intrinsic)
+- Seed predation: 95% efficiency
+- Human population: 20-3,000 individuals
 
-The taphonomic model addresses methodological critiques of rat predation evidence:
+### 2. Taphonomic Analysis (Python)
+
+Quantifies preservation bias in archaeological shell fragments:
 
 ```bash
 cd python
-python PalmNutGnawModel.py
+python RatNutGnawModel.py
 ```
 
-**The model provides:**
-- Quantitative estimates of gnaw mark preservation rates under different fragmentation scenarios
-- Sensitivity analysis across parameter ranges (hole sizes, fragment distributions)
-- Statistical validation through Monte Carlo simulation
-- Archaeological interpretation framework for shell fragment assemblages
+**Output:**
+- `palm_nut_gnaw_sensitivity_analysis.png`: 4-panel sensitivity analysis
+- Shows 65-90% of fragments would lack gnaw marks even with 100% predation
 
-**Key model components:**
-- **Simple Probability Model**: Baseline theoretical predictions
-- **Fragment Size Model**: Accounts for size-dependent preservation bias using log-normal fragmentation distributions
-- **Geometric Overlap Model**: Spatial analysis of fragment-gnaw hole intersections
-- **Sensitivity Analysis**: Robustness testing across 5-40% gnaw hole coverage
+### 3. Archaeological Analysis (R)
 
-**Outputs:**
-- Statistical summary of preservation bias across parameter space
-- Visualization of fragment size effects and hole size sensitivity
-- Archaeological scenario comparisons (no predation vs. intensive predation)
-- Methodological guidelines for interpreting negative evidence
+Tests competing hypotheses using faunal data from excavations:
 
-**Example results:**
-```
-Fragment size model results:
-  Mean fragment area 1.0% of shell: 77.0% ± 3.2% lack gnaw marks
-  Mean fragment area 5.0% of shell: 72.0% ± 4.1% lack gnaw marks
-  Mean fragment area 10.0% of shell: 65.0% ± 5.3% lack gnaw marks
+```bash
+cd R-code
+Rscript R-code-for-paper.R
 ```
 
-## Data Sources
+**Generated Figures (3 files):**
+- `archaeological_temporal_decline.png`: 93% decrease in rat abundance
+- `archaeological_all_excavations.png`: Patterns across 5 excavations
+- `archaeological_variability.png`: Coefficient of variation analysis
 
-### Archaeological Faunal Data
-Archaeological data from Anakena excavations:
-- Skjølsvold 1987-1988 (MNI data)
-- Martinsson-Wallin & Crockford 1986-1988 (NISP data)
-- Steadman 1991 Units 1-3 and Unit 4 (NISP data)
-- Hunt & Lipo 2004-2005 (NISP data)
 
-### Taphonomic Parameters
-Based on empirical observations of rat gnaw patterns:
-- Gnaw hole coverage: 10-40% of shell surface area (default 20%)
-- Fragment size distribution: 1-20% of original shell area
-- Post-depositional fragmentation: modeled as stochastic process
+## Key Results
 
-## Model Parameters
+### Ecological Modeling
+- Rat populations reach **11.2 million** within 47 years
+- **77.7% faster deforestation** with human presence
+- Palm forest decline from 15 million to <140,000 trees by 1722 CE (rats only)
+- Complete deforestation accelerated to ~500 years with rat-human synergy
 
-### Rat Population (Ecological Model)
-- Intrinsic growth rate: 2.5 (accounting for 2.5 litters/year, 2.5 offspring/litter)
-- Lifespan: 1 year
-- Carrying capacity: 0.5-4.0 rats per palm (seasonal variation)
+### Archaeological Evidence  
+- **93% decrease** in rat abundance over time (contradicts fallback food hypothesis)
+- High variability (CV >100%) indicates depositional effects
+- Pattern consistent with invasive species boom-bust dynamics
 
-### Palm Forest (Ecological Model)
-- Initial population: 15 million trees
-- Lifespan: up to 500 years
-- Maturation time: 70 years
-- Seed predation efficiency: 95%
+### Taphonomic Analysis
+- **65-90% of shell fragments lack gnaw marks** even with 100% predation
+- Geometric constraints limit gnaw marks to ~20% of shell surface
+- Post-depositional fragmentation creates systematic preservation bias
 
-### Human Population (Ecological Model)
-- Initial: 20 individuals (ca. 1200 CE)
-- Carrying capacity: 3,000 individuals
-- Forest clearing: 5 palms/person/year
+## Scientific Contributions
 
-### Taphonomic Model Parameters
-- **Shell geometry**: Spherical approximation with normalized radius
-- **Gnaw hole characteristics**: Circular holes representing 10-40% of surface area
-- **Fragment distribution**: Log-normal size distribution (CV = 0.5)
-- **Spatial relationships**: Random fragmentation independent of gnaw hole location
-- **Monte Carlo iterations**: 1,000-10,000 simulations for statistical stability
-
-## Methodological Innovation
-
-This project demonstrates the importance of quantitative taphonomic modeling in archaeological interpretation. The palm nut analysis specifically addresses:
-
-1. **Geometric constraints** in preservation of biological modifications
-2. **Post-depositional bias** affecting archaeological assemblages  
-3. **Statistical framework** for evaluating negative evidence
-4. **Integration** of taphonomic and ecological approaches
-
-The taphonomic model provides a template for addressing similar preservation bias problems in other archaeological contexts where the absence of evidence has been misinterpreted as evidence of absence.
+1. **Quantitative taphonomic modeling** - Mathematical framework for preservation bias
+2. **Integrated ecological-archaeological approach** - Combines population dynamics with faunal evidence
+3. **Resolution of methodological controversy** - Demonstrates fallacy in negative evidence arguments
+4. **Reproducible computational science** - Full code and dependency management provided
 
 ## Citation
 
-If you use this code or data, please cite:
+```bibtex
+@article{hunt2025rats,
+  title={Reassessing the Role of Polynesian Rats (Rattus exulans) in Rapa Nui's Deforestation},
+  author={Hunt, Terry L. and Lipo, Carl P.},
+  journal={Journal of Archaeological Science},
+  year={2025},
+  note={In review}
+}
 
-Hunt, T.L. and Lipo, C.P. (2025 - in review). Reassessing the Role of Polynesian Rats (*Rattus exulans*) in Rapa Nui's Deforestation: Faunal Evidence and Ecological Modeling. Journal of Archaeological Science.
-
-For the taphonomic model specifically:
-```
-Hunt, T.L. and Lipo, C.P. (2025). PalmNutGnawModel: Taphonomic analysis of gnaw mark 
-preservation in fragmented shell assemblages. Software available at: 
-https://github.com/[repository-url]
+@software{hunt2025software,
+  title={Rapa Nui Rats: Ecological and Taphonomic Models},
+  author={Hunt, Terry L. and Lipo, Carl P.},
+  year={2025},
+  url={https://github.com/yourusername/rapanuirats}
+}
 ```
 
 ## Authors
@@ -251,35 +230,21 @@ SOFTWARE.
 
 ## Troubleshooting
 
-### Common Issues
-
-**Python Environment:**
-- If you encounter import errors, ensure all required packages are installed in your active environment
-- For matplotlib display issues on some systems, you may need to install additional GUI backends
-
-**Memory Requirements:**
-- The Monte Carlo simulations in PalmNutGnawModel.py are memory-efficient but may take several minutes for large parameter sweeps
-- Reduce `n_simulations` parameter if experiencing performance issues
-
-**R Dependencies:**
-- Some plot generation may require additional system dependencies for SVG output
-- Install `cairo` system library if experiencing SVG export issues
-
-## Acknowledgments
-
-We thank Sergio Rapu Haoa for his collegiality, and Gina Pakarati and Mike Rapu Haoa for their enduring commitment to community-based archaeology on Rapa Nui. We also acknowledge valuable discussions with colleagues about taphonomic processes and methodological approaches to negative evidence in archaeology.
+- **Python import errors**: Activate virtual environment first (`source venv/bin/activate`)
+- **R package errors**: Run `renv::restore()` from R-code directory
+- **Memory issues**: Reduce simulation iterations or use a machine with more RAM
+- **Missing figures**: Ensure you're in the correct directory when running scripts
 
 ## Contributing
 
-We welcome contributions! Please feel free to submit issues or pull requests. Particular areas of interest include:
+We welcome contributions! Areas of interest:
+- Extensions to other island systems
+- Additional taphonomic scenarios
+- Performance optimizations
+- Visualization improvements
 
-- Extension of taphonomic models to other shell/bone modification scenarios
-- Additional ecological parameters for different island systems
-- Visualization improvements for model outputs
-- Performance optimizations for large-scale parameter exploration
+Please submit issues or pull requests via GitHub.
 
-## Additional Resources
+## Acknowledgments
 
-- Related ecological modeling approaches: [Island Conservation](https://www.islandconservation.org/)
-- Taphonomic analysis in archaeology: [Zooarchaeology methodology](https://academic.oup.com/book/5386)
-- Monte Carlo methods in archaeology: [Computer Applications in Archaeology](https://caa-international.org/)
+We thank Sergio Rapu Haoa, Gina Pakarati, and Mike Rapu Haoa for their commitment to community-based archaeology on Rapa Nui.

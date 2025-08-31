@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.coverage
+.pytest_cache/
+htmlcov/
+*.log
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+Rplots.pdf
+.Rapp.history
+
+# renv local library (keep renv.lock and activate.R)
+R-code/renv/library/
+R-code/renv/local/
+R-code/renv/cellar/
+R-code/renv/lock/
+R-code/renv/python/
+R-code/renv/sandbox/
+R-code/renv/staging/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*~
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Output files (keep figures for reference)
+# Uncomment the line below if you don't want to track generated figures
+# figures/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak

@@ -23,14 +23,11 @@ library(knitr)      # For document generation
 library(svglite)    # For saving vector graphics
 
 # -----------------------------------------------------------------------------
-# SETUP: Create directories for saving figures
+# SETUP: Create figures directory if it doesn't exist
 # -----------------------------------------------------------------------------
-# Create separate directories for PNG (raster) and SVG (vector) formats
-if (!dir.exists("figures_png")) {
-  dir.create("figures_png")
-}
-if (!dir.exists("figures_svg")) {
-  dir.create("figures_svg")
+# Use the main figures directory for consistency with Python outputs
+if (!dir.exists("../figures")) {
+  dir.create("../figures")
 }
 
 # =============================================================================
@@ -136,7 +133,7 @@ hl2005_rat$Rat_Percent <- (hl2005_rat$Rat_NISP / hl2005_rat$Total_NISP) * 100
 # and strongly supports boom-bust trajectory typical of invasive species
 
 # Save as PNG (high resolution for print)
-png("figures_png/fig_temporal_decline.png", width = 10, height = 10, units = "in", res = 300)
+png("../figures/archaeological_temporal_decline.png", width = 10, height = 10, units = "in", res = 300)
 
 # Set up 3-panel layout
 par(mfrow = c(3, 1),      # 3 rows, 1 column
@@ -202,7 +199,7 @@ barplot(comparison_data,
 dev.off()  # Close PNG device
 
 # Save as SVG (vector format for publication)
-svglite("figures_svg/fig_temporal_decline.svg", width = 10, height = 10)
+svglite("../figures/archaeological_temporal_decline.svg", width = 10, height = 10)
 # [Repeat same plotting code as above]
 par(mfrow = c(3, 1), mar = c(4, 4, 3, 2))
 
@@ -331,12 +328,12 @@ p1 <- ggplot(all_rat_data, aes(x = Context_Numeric, y = Rat_Percent)) +
         strip.text = element_text(face = "bold"))  # Bold excavation names
 
 # Save as PNG
-png("figures_png/fig_all_excavations.png", width = 10, height = 10, units = "in", res = 300)
+png("../figures/archaeological_all_excavations.png", width = 10, height = 10, units = "in", res = 300)
 grid.arrange(p1, heights = c(1, 1))
 dev.off()
 
 # Save as SVG
-svg("figures_svg/fig_all_excavations.svg", width = 10, height = 10)
+svg("../figures/archaeological_all_excavations.svg", width = 10, height = 10)
 grid.arrange(p1, heights = c(1, 1))
 dev.off()
 
@@ -407,10 +404,10 @@ p3 <- ggplot(cv_data, aes(x = reorder(Excavation, CV_Rat), y = CV_Rat)) +
         plot.subtitle = element_text(size = 12, face = "italic"))
 
 # Save as PNG
-ggsave("figures_png/fig_variability.png", plot = p3, width = 10, height = 6, dpi = 300)
+ggsave("../figures/archaeological_variability.png", plot = p3, width = 10, height = 6, dpi = 300)
 
 # Save as SVG
-ggsave("figures_svg/fig_variability.svg", plot = p3, width = 10, height = 6)
+ggsave("../figures/archaeological_variability.svg", plot = p3, width = 10, height = 6)
 
 # Display in R/RStudio
 print(p3)
@@ -421,13 +418,11 @@ print(p3)
 # Print summary of what was created and key findings
 
 cat("\n=== FIGURE GENERATION COMPLETE ===\n")
-cat("\nAll figures have been saved to:\n")
-cat("PNG files: figures_png/\n")
-cat("SVG files: figures_svg/\n")
+cat("\nAll figures have been saved to: ../figures/\n")
 cat("\nSaved files:\n")
-cat("- fig_temporal_decline.png/.svg (3-panel showing 93% rat decline)\n")
-cat("- fig_all_excavations.png/.svg (Faceted plot of all excavations)\n")
-cat("- fig_variability.png/.svg (Coefficient of variation analysis)\n")
+cat("- archaeological_temporal_decline.png/.svg (3-panel showing 93% rat decline)\n")
+cat("- archaeological_all_excavations.png/.svg (Faceted plot of all excavations)\n")
+cat("- archaeological_variability.png/.svg (Coefficient of variation analysis)\n")
 cat("\nKey findings visualized:\n")
 cat("1. 93% decrease in rats over time SUPPORTS boom-bust invasive species model\n")
 cat("2. Pattern CONTRADICTS fallback food hypothesis (would predict increase)\n")

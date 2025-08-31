@@ -501,6 +501,13 @@ def sensitivity_analysis():
     plt.grid(True, alpha=0.3)
     
     plt.tight_layout()
+    
+    # Save the figure to figures directory
+    plt.savefig('../figures/palm_nut_gnaw_sensitivity_analysis.png', format='png', dpi=600, bbox_inches='tight')
+    plt.savefig('../figures/palm_nut_gnaw_sensitivity_analysis.pdf', format='pdf', dpi=600, bbox_inches='tight')
+    print("\nSensitivity analysis figure saved in ../figures/ directory:")
+    print("- palm_nut_gnaw_sensitivity_analysis.png/.pdf")
+    
     plt.show()
     
     # Print summary of key findings
