@@ -4,11 +4,15 @@
 [![R 4.3+](https://img.shields.io/badge/R-4.3+-green.svg)](https://www.r-project.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This repository contains computational models and archaeological data analysis supporting the paper "Reassessing the Role of Polynesian Rats (*Rattus exulans*) in Rapa Nui's Deforestation" by Terry L. Hunt and Carl P. Lipo.
+This repository contains computational models and archaeological data analysis supporting the paper "Reassessing the Role of Polynesian Rats (*Rattus exulans*) in Rapa Nui (Easter Island) Deforestation: Faunal Evidence and Ecological Modeling" by Terry L. Hunt and Carl P. Lipo, published in the Journal of Archaeological Science (in press).
+
+## Abstract
+
+The role of introduced Polynesian rats (*Rattus exulans*) in the deforestation of Rapa Nui remains a contentious issue. Several critics including Mieth and Bork (2010) argue that rats played a negligible role compared to human impacts. We address the role of rats through three lines of evidence: (1) a response to rats-are-negligible arguments, including problematic continental analogies and misunderstandings of seed predation impacts; (2) analysis of rat remains from Anakena excavations (1986-2005) showing that rats decreased by 93% over time, contradicting claims they served as a "fallback food" following resource depletion; and (3) ecological modeling demonstrating that introduced rats could reach populations of 11.2 million within 47 years, with 95% seed predation sufficient to prevent palm regeneration. Our integrated evidence supports rats as a keystone invasive species that, through synergistic interactions with human forest clearing, drove one of the most complete ecological transformations documented in human history. These findings challenge narratives of simple anthropogenic "ecocide" and highlight the critical role of invasive species in island environmental change.
 
 ## Overview
 
-The ecological transformation of Rapa Nui (Easter Island) has become one of the most contested case studies in environmental archaeology. This repository provides computational tools to analyze the role of introduced Polynesian rats (*Rattus exulans*) in the island's deforestation through three complementary approaches:
+This repository provides computational tools to analyze the role of introduced Polynesian rats (*Rattus exulans*) in Rapa Nui's deforestation through three complementary approaches:
 
 1. **Archaeological Data Analysis (R)**: Analysis of rat remains from excavations at Anakena (1986-2005) to test competing hypotheses about rat population dynamics
 2. **Ecological Simulation (Python)**: Population dynamics modeling to quantify the demographic consequences of rat introduction
@@ -41,8 +45,8 @@ The ecological transformation of Rapa Nui (Easter Island) has become one of the 
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/rapanuirats.git
-cd rapanuirats
+git clone https://github.com/clipo/RapaNuiRats.git
+cd RapaNuiRats
 ```
 
 2. **Set up Python environment**
@@ -204,28 +208,30 @@ All paper figures are saved in both PNG and PDF/SVG formats for publication use.
 
 ```bibtex
 @article{hunt2025rats,
-  title={Reassessing the Role of Polynesian Rats (Rattus exulans) in Rapa Nui's Deforestation},
+  title={Reassessing the Role of Polynesian Rats (Rattus exulans) in Rapa Nui (Easter Island) Deforestation: Faunal Evidence and Ecological Modeling},
   author={Hunt, Terry L. and Lipo, Carl P.},
   journal={Journal of Archaeological Science},
   year={2025},
-  note={In review}
+  note={In press}
 }
 
 @software{hunt2025software,
   title={Rapa Nui Rats: Ecological and Taphonomic Models},
   author={Hunt, Terry L. and Lipo, Carl P.},
   year={2025},
-  url={https://github.com/yourusername/rapanuirats}
+  url={https://github.com/clipo/RapaNuiRats}
 }
 ```
 
 ## Authors
 
 - **Terry L. Hunt** - School of Anthropology, University of Arizona
+  - Address: Emil W. Haury Anthropology Bldg, 1009 E South Campus Dr, Tucson, AZ 85721
   - Email: tlhunt@arizona.edu
   - ORCID: 0009-0008-6257-8533
 
 - **Carl P. Lipo** - Department of Anthropology, Binghamton University
+  - Address: 4400 Vestal Parkway E, Binghamton, NY 13902
   - Email: clipo@binghamton.edu
   - ORCID: 0000-0003-4391-3590
 
