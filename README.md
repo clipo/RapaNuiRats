@@ -70,7 +70,7 @@ python RatNutGnawModel.py
 Rscript R-code-for-paper.R
 ```
 
-This generates 25+ publication-quality figures in the `figures/` directory.
+This generates 25+ publication-quality figures in the `figures/` directory and automatically copies key paper figures to `paper_figures/` with standardized naming.
 
 ## Repository Structure
 
@@ -86,6 +86,12 @@ rapanuirats/
 │   ├── renv.lock              # R package versions
 │   └── renv/                  # Project library
 ├── figures/                   # Output directory for all visualizations
+├── paper_figures/             # Paper-ready figures with standardized naming
+│   ├── Figure_9.*             # Archaeological temporal decline
+│   ├── Figure_10.*            # All excavations comparison
+│   ├── Figure_11.*            # Variability analysis
+│   ├── Figure_12.*            # Ecological collapse (rats only)
+│   └── Figure_13.*            # Ecological collapse (duplicate)
 ├── DEPENDENCIES.md            # Dependency management guide
 ├── CLAUDE.md                  # AI assistant configuration
 └── README.md                  # This file
@@ -144,6 +150,29 @@ Rscript R-code-for-paper.R
 - `archaeological_temporal_decline.png`: 93% decrease in rat abundance
 - `archaeological_all_excavations.png`: Patterns across 5 excavations
 - `archaeological_variability.png`: Coefficient of variation analysis
+
+### Paper Figure Generation
+
+The scripts automatically generate paper-ready figures in the `paper_figures/` directory with standardized naming conventions:
+
+**Automatic Paper Figure Mapping:**
+- **Figure 9**: Archaeological temporal decline (3-panel showing 93% rat decrease)
+- **Figure 10**: Rat percentages across all excavations  
+- **Figure 11**: High variability in rat abundance (coefficient of variation)
+- **Figure 12 & 13**: Ecological collapse - rat population vs palm forest decline
+
+To regenerate paper figures:
+```bash
+# Python figures (generates Figures 12-13)
+cd python
+echo "2" | python rat_simulation.py  # Option 2 for comparative analysis
+
+# R figures (generates Figures 9-11)
+cd ../R-code
+Rscript --vanilla R-code-for-paper.R
+```
+
+All paper figures are saved in both PNG and PDF/SVG formats for publication use.
 
 
 ## Key Results

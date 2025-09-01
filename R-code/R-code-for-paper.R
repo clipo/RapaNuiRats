@@ -18,6 +18,27 @@ library(ggplot2)    # For creating publication-quality plots
 library(dplyr)      # For data manipulation and summarization
 library(tidyr)      # For data reshaping
 library(gridExtra)  # For arranging multiple plots
+
+# Helper function to copy figures to paper_figures directory with correct names
+copy_to_paper_figures <- function(source_file, paper_figure_name) {
+  # Ensure paper_figures directory exists
+  paper_figures_dir <- "../paper_figures"
+  if (!dir.exists(paper_figures_dir)) {
+    dir.create(paper_figures_dir, recursive = TRUE)
+  }
+  
+  # Get file extension
+  ext <- tools::file_ext(source_file)
+  
+  # Create destination path
+  dest_file <- file.path(paper_figures_dir, paste0(paper_figure_name, ".", ext))
+  
+  # Copy file if source exists
+  if (file.exists(source_file)) {
+    file.copy(source_file, dest_file, overwrite = TRUE)
+    cat(paste0("  → Copied to paper_figures/", paper_figure_name, ".", ext, "\n"))
+  }
+}
 library(scales)     # For axis formatting
 library(knitr)      # For document generation
 library(svglite)    # For saving vector graphics
@@ -198,6 +219,9 @@ barplot(comparison_data,
 
 dev.off()  # Close PNG device
 
+# Copy as Figure 9 to paper_figures
+copy_to_paper_figures("../figures/archaeological_temporal_decline.png", "Figure_9")
+
 # Save as SVG (vector format for publication)
 svglite("../figures/archaeological_temporal_decline.svg", width = 10, height = 10)
 # [Repeat same plotting code as above]
@@ -234,6 +258,9 @@ barplot(comparison_data,
         args.legend = list(x = "topright", bty = "n"),
         ylim = c(0, 120))
 dev.off()
+
+# Copy SVG as Figure 9 to paper_figures
+copy_to_paper_figures("../figures/archaeological_temporal_decline.svg", "Figure_9")
 
 # Display in R/RStudio for preview
 par(mfrow = c(3, 1), mar = c(4, 4, 3, 2))
@@ -332,10 +359,16 @@ png("../figures/archaeological_all_excavations.png", width = 10, height = 10, un
 grid.arrange(p1, heights = c(1, 1))
 dev.off()
 
+# Copy as Figure 10 to paper_figures
+copy_to_paper_figures("../figures/archaeological_all_excavations.png", "Figure_10")
+
 # Save as SVG
 svg("../figures/archaeological_all_excavations.svg", width = 10, height = 10)
 grid.arrange(p1, heights = c(1, 1))
 dev.off()
+
+# Copy SVG as Figure 10 to paper_figures
+copy_to_paper_figures("../figures/archaeological_all_excavations.svg", "Figure_10")
 
 # Display in R/RStudio
 grid.arrange(p1, heights = c(1, 1))
@@ -406,8 +439,14 @@ p3 <- ggplot(cv_data, aes(x = reorder(Excavation, CV_Rat), y = CV_Rat)) +
 # Save as PNG
 ggsave("../figures/archaeological_variability.png", plot = p3, width = 10, height = 6, dpi = 300)
 
+# Copy as Figure 11 to paper_figures
+copy_to_paper_figures("../figures/archaeological_variability.png", "Figure_11")
+
 # Save as SVG
 ggsave("../figures/archaeological_variability.svg", plot = p3, width = 10, height = 6)
+
+# Copy SVG as Figure 11 to paper_figures
+copy_to_paper_figures("../figures/archaeological_variability.svg", "Figure_11")
 
 # Display in R/RStudio
 print(p3)

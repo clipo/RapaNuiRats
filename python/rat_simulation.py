@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
+import shutil
+import os
 
 
 class RapaNuiEcosystem:
@@ -301,6 +303,13 @@ class RapaNuiEcosystem:
         # Save Figure 4
         fig4.savefig(f'../figures/{scenario_label}_comparative_dynamics.pdf', format='pdf', dpi=600, bbox_inches='tight')
         fig4.savefig(f'../figures/{scenario_label}_comparative_dynamics.png', format='png', dpi=600, bbox_inches='tight')
+        
+        # Copy as paper figures (this corresponds to Figure 12 and 13 in the paper)
+        if scenario_label == "rats_only":
+            copy_to_paper_figures(f'../figures/{scenario_label}_comparative_dynamics.png', 'Figure_12')
+            copy_to_paper_figures(f'../figures/{scenario_label}_comparative_dynamics.pdf', 'Figure_12')
+            copy_to_paper_figures(f'../figures/{scenario_label}_comparative_dynamics.png', 'Figure_13')
+            copy_to_paper_figures(f'../figures/{scenario_label}_comparative_dynamics.pdf', 'Figure_13')
 
         # Figure 5: Rats and Trees (new figure without humans)
         fig5, ax5 = plt.subplots(1, 1, figsize=(10, 8))
@@ -813,6 +822,30 @@ class RapaNuiEcosystem:
         print(f"Rats + Humans: {human_decline_rate:,.0f} trees lost per year")
         if rat_decline_rate > 0:
             print(f"Human acceleration factor: {human_decline_rate / rat_decline_rate:.1f}x faster")
+
+
+def copy_to_paper_figures(source_file, paper_figure_name):
+    """
+    Copy a figure to the paper_figures directory with the correct paper figure name.
+    
+    Parameters:
+    source_file: Path to the source figure file
+    paper_figure_name: The paper figure name (e.g., 'Figure_12', 'Figure_13')
+    """
+    # Ensure paper_figures directory exists
+    paper_figures_dir = '../paper_figures'
+    os.makedirs(paper_figures_dir, exist_ok=True)
+    
+    # Get file extension
+    _, ext = os.path.splitext(source_file)
+    
+    # Create destination path
+    dest_file = os.path.join(paper_figures_dir, f'{paper_figure_name}{ext}')
+    
+    # Copy file if source exists
+    if os.path.exists(source_file):
+        shutil.copy2(source_file, dest_file)
+        print(f"  → Copied to paper_figures/{paper_figure_name}{ext}")
 
 
 # Run the historical simulation

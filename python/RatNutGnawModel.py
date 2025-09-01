@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats
+import shutil
+import os
 
 class PalmNutGnawModel:
     """
@@ -530,6 +532,31 @@ def sensitivity_analysis():
     print("• Quantitative analysis overturns qualitative archaeological arguments")
     
     return results
+
+
+def copy_to_paper_figures(source_file, paper_figure_name):
+    """
+    Copy a figure to the paper_figures directory with the correct paper figure name.
+    
+    Parameters:
+    source_file: Path to the source figure file
+    paper_figure_name: The paper figure name (e.g., 'Figure_8')
+    """
+    # Ensure paper_figures directory exists
+    paper_figures_dir = '../paper_figures'
+    os.makedirs(paper_figures_dir, exist_ok=True)
+    
+    # Get file extension
+    _, ext = os.path.splitext(source_file)
+    
+    # Create destination path
+    dest_file = os.path.join(paper_figures_dir, f'{paper_figure_name}{ext}')
+    
+    # Copy file if source exists
+    if os.path.exists(source_file):
+        shutil.copy2(source_file, dest_file)
+        print(f"  → Copied to paper_figures/{paper_figure_name}{ext}")
+
 
 if __name__ == "__main__":
     """

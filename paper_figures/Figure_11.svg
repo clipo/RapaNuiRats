@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='720.00pt' height='432.00pt' viewBox='0 0 720.00 432.00'>
+<g class='svglite'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: none;'/>
+<defs>
+  <clipPath id='cpMC4wMHw3MjAuMDB8MC4wMHw0MzIuMDA='>
+    <rect x='0.00' y='0.00' width='720.00' height='432.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw0MzIuMDA=)'>
+</g>
+<defs>
+  <clipPath id='cpOTIuNjB8NzE0LjAyfDQyLjAyfDM5Ny42NQ=='>
+    <rect x='92.60' y='42.02' width='621.42' height='355.64' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpOTIuNjB8NzE0LjAyfDQyLjAyfDM5Ny42NQ==)'>
+<polyline points='231.30,397.65 231.30,42.02 ' style='stroke-width: 0.58; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='452.19,397.65 452.19,42.02 ' style='stroke-width: 0.58; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='673.08,397.65 673.08,42.02 ' style='stroke-width: 0.58; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='92.60,363.24 714.02,363.24 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='92.60,305.88 714.02,305.88 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='92.60,248.51 714.02,248.51 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='92.60,191.15 714.02,191.15 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='92.60,133.79 714.02,133.79 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='92.60,76.43 714.02,76.43 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='120.85,397.65 120.85,42.02 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='341.74,397.65 341.74,42.02 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='562.63,397.65 562.63,42.02 ' style='stroke-width: 1.16; stroke: #EBEBEB; stroke-linecap: butt;' />
+<rect x='120.85' y='107.98' width='543.03' height='51.62' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #A52A2A; fill-opacity: 0.80;' />
+<rect x='120.85' y='165.34' width='442.90' height='51.62' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #A52A2A; fill-opacity: 0.80;' />
+<rect x='120.85' y='280.06' width='407.48' height='51.62' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #A52A2A; fill-opacity: 0.80;' />
+<rect x='120.85' y='337.42' width='326.08' height='51.62' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #A52A2A; fill-opacity: 0.80;' />
+<rect x='120.85' y='222.70' width='442.00' height='51.62' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #A52A2A; fill-opacity: 0.80;' />
+<rect x='120.85' y='50.62' width='564.93' height='51.62' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #A52A2A; fill-opacity: 0.80;' />
+<line x1='562.63' y1='397.65' x2='562.63' y2='42.02' style='stroke-width: 2.13; stroke: #FF0000; stroke-dasharray: 11.38,11.38; stroke-linecap: butt;' />
+<text x='650.99' y='366.80' style='font-size: 9.96px;fill: #FF0000; font-family: "Arial";' textLength='108.45px' lengthAdjust='spacingAndGlyphs'>High variability threshold</text>
+</g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw0MzIuMDA=)'>
+<text x='87.22' y='366.67' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='58.62px' lengthAdjust='spacingAndGlyphs'>Steadman U4</text>
+<text x='87.22' y='309.31' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='67.14px' lengthAdjust='spacingAndGlyphs'>Steadman U1-3</text>
+<text x='87.22' y='251.95' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='35.88px' lengthAdjust='spacingAndGlyphs'>HL 2004</text>
+<text x='87.22' y='194.59' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='54.88px' lengthAdjust='spacingAndGlyphs'>MW 1986-88</text>
+<text x='87.22' y='137.23' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='63.94px' lengthAdjust='spacingAndGlyphs'>Skjølsvold MNI</text>
+<text x='87.22' y='79.87' text-anchor='end' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='35.88px' lengthAdjust='spacingAndGlyphs'>HL 2005</text>
+<text x='120.85' y='409.90' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='5.33px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='341.74' y='409.90' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='10.66px' lengthAdjust='spacingAndGlyphs'>50</text>
+<text x='562.63' y='409.90' text-anchor='middle' style='font-size: 9.60px;fill: #4D4D4D; font-family: "Arial";' textLength='15.98px' lengthAdjust='spacingAndGlyphs'>100</text>
+<text x='403.31' y='423.50' text-anchor='middle' style='font-size: 12.00px; font-family: "Arial";' textLength='141.59px' lengthAdjust='spacingAndGlyphs'>Coefficient of Variation (%)</text>
+<text x='92.60' y='33.52' style='font-size: 12.00px; font-style: italic; font-family: "Arial";' textLength='277.75px' lengthAdjust='spacingAndGlyphs'>Coefficients of variation &gt; 100% in most excavations</text>
+<text x='92.60' y='16.00' style='font-size: 14.00px; font-weight: bold; font-family: "Arial";' textLength='426.41px' lengthAdjust='spacingAndGlyphs'>High Variability in Rat Abundance Indicates Depositional Effects</text>
+</g>
+</g>
+</svg>
