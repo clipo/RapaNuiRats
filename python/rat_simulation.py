@@ -285,14 +285,22 @@ class RapaNuiEcosystem:
         fig3.savefig(f'../figures/{scenario_label}_human_population.pdf', format='pdf', dpi=600, bbox_inches='tight')
         fig3.savefig(f'../figures/{scenario_label}_human_population.png', format='png', dpi=600, bbox_inches='tight')
 
-        # Figure 4: Comparative population dynamics (normalized)
+        # Figure 4: Comparative population dynamics (normalized) - Colorblind-friendly version
         fig4, ax4 = plt.subplots(1, 1, figsize=(10, 8))
-        ax4.plot(dates, total_palms / np.max(total_palms), 'g-', linewidth=2.5,
-                 label='Palm Forest (normalized)', alpha=0.8)
-        ax4.plot(dates, rats / np.max(rats), 'r-', linewidth=2.5,
-                 label='Rats (normalized)', alpha=0.8)
-        ax4.plot(dates, humans / np.max(humans), 'b-', linewidth=2.5,
-                 label='Humans (normalized)', alpha=0.8)
+        
+        # Use colorblind-friendly colors and different line styles
+        # Dark blue for palm forest (solid, thick)
+        ax4.plot(dates, total_palms / np.max(total_palms), color='#0173B2', linestyle='-', linewidth=3,
+                 label='Palm Forest (normalized)', alpha=0.9, zorder=3)
+        
+        # Orange for rats (dashed, medium)
+        ax4.plot(dates, rats / np.max(rats), color='#DE8F05', linestyle='--', linewidth=2.5,
+                 label='Rats (normalized)', alpha=0.9, zorder=2)
+        
+        # Dark purple for humans (dotted, medium)
+        ax4.plot(dates, humans / np.max(humans), color='#CC78BC', linestyle=':', linewidth=2.5,
+                 label='Humans (normalized)', alpha=0.9, zorder=1)
+        
         ax4.set_xlabel('Year (CE)')
         ax4.set_ylabel('Relative Population Size')
         ax4.set_title('Comparative Population Dynamics (Normalized)')
@@ -304,28 +312,29 @@ class RapaNuiEcosystem:
         fig4.savefig(f'../figures/{scenario_label}_comparative_dynamics.pdf', format='pdf', dpi=600, bbox_inches='tight')
         fig4.savefig(f'../figures/{scenario_label}_comparative_dynamics.png', format='png', dpi=600, bbox_inches='tight')
         
-        # Copy as paper figures (this corresponds to Figure 12 and 13 in the paper)
+        # Copy as paper figures (this corresponds to Figure 12 in the paper)
         if scenario_label == "rats_only":
             copy_to_paper_figures(f'../figures/{scenario_label}_comparative_dynamics.png', 'Figure_12')
             copy_to_paper_figures(f'../figures/{scenario_label}_comparative_dynamics.pdf', 'Figure_12')
-            copy_to_paper_figures(f'../figures/{scenario_label}_comparative_dynamics.png', 'Figure_13')
-            copy_to_paper_figures(f'../figures/{scenario_label}_comparative_dynamics.pdf', 'Figure_13')
 
-        # Figure 5: Rats and Trees (new figure without humans)
+        # Figure 5: Rats and Trees (new figure without humans) - Colorblind-friendly version
         fig5, ax5 = plt.subplots(1, 1, figsize=(10, 8))
 
-        # Plot palms on left y-axis
-        ax5.plot(dates, total_palms / 1000, 'g-', linewidth=3, label='Total Palm Trees')
-        ax5.plot(dates, mature_palms / 1000, 'g--', linewidth=2, label='Mature Palm Trees', alpha=0.7)
+        # Plot palms on left y-axis using colorblind-friendly colors
+        ax5.plot(dates, total_palms / 1000, color='#0173B2', linestyle='-', linewidth=3, 
+                 label='Total Palm Trees', zorder=3)
+        ax5.plot(dates, mature_palms / 1000, color='#0173B2', linestyle='--', linewidth=2, 
+                 label='Mature Palm Trees', alpha=0.7, zorder=2)
         ax5.set_xlabel('Year (CE)')
-        ax5.set_ylabel('Palm Trees (thousands)', color='green')
-        ax5.tick_params(axis='y', labelcolor='green')
+        ax5.set_ylabel('Palm Trees (thousands)', color='#0173B2')
+        ax5.tick_params(axis='y', labelcolor='#0173B2')
 
         # Plot rats on right y-axis
         ax5_rat = ax5.twinx()
-        ax5_rat.plot(dates, rats / 1000, 'r-', linewidth=3, label='Rat Population', alpha=0.8)
-        ax5_rat.set_ylabel('Rat Population (thousands)', color='red')
-        ax5_rat.tick_params(axis='y', labelcolor='red')
+        ax5_rat.plot(dates, rats / 1000, color='#DE8F05', linestyle='-', linewidth=3, 
+                     label='Rat Population', alpha=0.9, zorder=1)
+        ax5_rat.set_ylabel('Rat Population (thousands)', color='#DE8F05')
+        ax5_rat.tick_params(axis='y', labelcolor='#DE8F05')
 
         ax5.set_title('Ecological Collapse: Rat Population vs Palm Forest Decline (1200-1722 CE)')
         ax5.grid(True, alpha=0.3)
@@ -639,15 +648,15 @@ class RapaNuiEcosystem:
         plt.rcParams['savefig.dpi'] = 600
         plt.rcParams['savefig.bbox'] = 'tight'
 
-        # Figure 10: Direct Palm Forest Comparison (1200-1722 CE)
+        # Figure 10: Direct Palm Forest Comparison (1200-1722 CE) - Colorblind-friendly version
         fig10, ax10 = plt.subplots(1, 1, figsize=(12, 8))
 
-        # Plot both scenarios on same timeline
-        ax10.plot(dates_rats, total_palms_rats / 1000, 'g-', linewidth=3,
-                   label='Rats Only', alpha=0.8)
-        ax10.plot(dates_humans, total_palms_humans / 1000, 'r-', linewidth=3,
-                   label='Rats + Humans', alpha=0.8)
-        ax10.axvline(x=1722, color='blue', linestyle='--', alpha=0.7, label='European Contact (1722 CE)')
+        # Plot both scenarios on same timeline with colorblind-friendly colors
+        ax10.plot(dates_rats, total_palms_rats / 1000, color='#0173B2', linestyle='-', linewidth=3,
+                   label='Rats Only', alpha=0.9)
+        ax10.plot(dates_humans, total_palms_humans / 1000, color='#DE8F05', linestyle='--', linewidth=3,
+                   label='Rats + Humans', alpha=0.9)
+        ax10.axvline(x=1722, color='#CC78BC', linestyle=':', linewidth=2, alpha=0.7, label='European Contact (1722 CE)')
         ax10.set_xlabel('Year (CE)')
         ax10.set_ylabel('Total Palm Trees (thousands)')
         ax10.set_title('Palm Forest Decline Comparison: Rats Only vs Rats + Humans (1200-1722 CE)')
@@ -659,14 +668,14 @@ class RapaNuiEcosystem:
         fig10.savefig('../figures/comparison_palm_decline.pdf', format='pdf', dpi=600, bbox_inches='tight')
         fig10.savefig('../figures/comparison_palm_decline.png', format='png', dpi=600, bbox_inches='tight')
 
-        # Figure 11: Rat Population Comparison
+        # Figure 11: Rat Population Comparison - Colorblind-friendly version
         fig11, ax11 = plt.subplots(1, 1, figsize=(12, 8))
 
-        ax11.plot(dates_rats, rats_rats / 1000, 'g-', linewidth=3,
-                  label='Rats Only Scenario', alpha=0.8)
-        ax11.plot(dates_humans, rats_humans / 1000, 'r-', linewidth=3,
-                  label='Rats + Humans Scenario', alpha=0.8)
-        ax11.axvline(x=1722, color='blue', linestyle='--', alpha=0.7, label='European Contact (1722 CE)')
+        ax11.plot(dates_rats, rats_rats / 1000, color='#0173B2', linestyle='-', linewidth=3,
+                  label='Rats Only Scenario', alpha=0.9)
+        ax11.plot(dates_humans, rats_humans / 1000, color='#DE8F05', linestyle='--', linewidth=3,
+                  label='Rats + Humans Scenario', alpha=0.9)
+        ax11.axvline(x=1722, color='#CC78BC', linestyle=':', linewidth=2, alpha=0.7, label='European Contact (1722 CE)')
         ax11.set_xlabel('Year (CE)')
         ax11.set_ylabel('Rat Population (thousands)')
         ax11.set_title('Rat Population Dynamics Comparison (1200-1722 CE)')
@@ -677,15 +686,15 @@ class RapaNuiEcosystem:
         fig11.savefig('../figures/comparison_rat_population.pdf', format='pdf', dpi=600, bbox_inches='tight')
         fig11.savefig('../figures/comparison_rat_population.png', format='png', dpi=600, bbox_inches='tight')
 
-        # Figure 12: Palm Decline with Human Population
+        # Figure 12: Palm Decline with Human Population - Colorblind-friendly version
         fig12, ax12 = plt.subplots(1, 1, figsize=(12, 8))
 
-        # Plot palm populations
-        ax12.plot(dates_rats, total_palms_rats / 1000, 'g-', linewidth=3,
-                  label='Rats Only', alpha=0.8)
-        ax12.plot(dates_humans, total_palms_humans / 1000, 'r-', linewidth=3,
-                  label='Rats + Humans', alpha=0.8)
-        ax12.axvline(x=1722, color='blue', linestyle='--', alpha=0.7, label='European Contact')
+        # Plot palm populations with colorblind-friendly colors
+        ax12.plot(dates_rats, total_palms_rats / 1000, color='#0173B2', linestyle='-', linewidth=3,
+                  label='Rats Only', alpha=0.9, zorder=3)
+        ax12.plot(dates_humans, total_palms_humans / 1000, color='#DE8F05', linestyle='--', linewidth=3,
+                  label='Rats + Humans', alpha=0.9, zorder=2)
+        ax12.axvline(x=1722, color='#929591', linestyle=':', linewidth=2, alpha=0.7, label='European Contact')
 
         ax12.set_xlabel('Year (CE)')
         ax12.set_ylabel('Total Palm Trees (thousands)', color='black')
@@ -696,10 +705,10 @@ class RapaNuiEcosystem:
 
         # Add human population on secondary y-axis
         ax12_human = ax12.twinx()
-        ax12_human.plot(dates_humans, humans_humans, 'b-', linewidth=2.5,
-                        label='Human Population', alpha=0.8)
-        ax12_human.set_ylabel('Human Population', color='blue')
-        ax12_human.tick_params(axis='y', labelcolor='blue')
+        ax12_human.plot(dates_humans, humans_humans, color='#CC78BC', linestyle='-.', linewidth=2.5,
+                        label='Human Population', alpha=0.9, zorder=1)
+        ax12_human.set_ylabel('Human Population', color='#CC78BC')
+        ax12_human.tick_params(axis='y', labelcolor='#CC78BC')
         ax12_human.set_ylim(0, max(humans_humans) * 1.1)
 
         # Combine legends
@@ -709,6 +718,10 @@ class RapaNuiEcosystem:
 
         fig12.savefig('../figures/comparison_palm_decline_with_humans.pdf', format='pdf', dpi=600, bbox_inches='tight')
         fig12.savefig('../figures/comparison_palm_decline_with_humans.png', format='png', dpi=600, bbox_inches='tight')
+        
+        # Copy Figure 13 to paper_figures
+        copy_to_paper_figures('../figures/comparison_palm_decline_with_humans.png', 'Figure_13')
+        copy_to_paper_figures('../figures/comparison_palm_decline_with_humans.pdf', 'Figure_13')
 
         plt.show()
 

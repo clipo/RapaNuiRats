@@ -67,14 +67,16 @@ renv::restore()  # Installs exact package versions
 #### Generate All Figures (Recommended)
 ```bash
 # From python directory
+cd python
 python rat_simulation.py  # Choose option 2 for comparative analysis
 python RatNutGnawModel.py
 
 # From R-code directory  
+cd ../R-code
 Rscript R-code-for-paper.R
 ```
 
-This generates 25+ publication-quality figures in the `figures/` directory and automatically copies key paper figures to `paper_figures/` with standardized naming.
+This generates 25+ publication-quality figures in the `figures/` directory and automatically copies key paper figures to `paper_figures/` with standardized naming. All figures use colorblind-friendly palettes and distinct line styles for accessibility.
 
 ## Repository Structure
 
@@ -94,8 +96,8 @@ rapanuirats/
 │   ├── Figure_9.*             # Archaeological temporal decline
 │   ├── Figure_10.*            # All excavations comparison
 │   ├── Figure_11.*            # Variability analysis
-│   ├── Figure_12.*            # Ecological collapse (rats only)
-│   └── Figure_13.*            # Ecological collapse (duplicate)
+│   ├── Figure_12.*            # Normalized population dynamics (colorblind-friendly)
+│   └── Figure_13.*            # Palm decline with human population comparison
 ├── DEPENDENCIES.md            # Dependency management guide
 ├── CLAUDE.md                  # AI assistant configuration
 └── README.md                  # This file
@@ -163,7 +165,10 @@ The scripts automatically generate paper-ready figures in the `paper_figures/` d
 - **Figure 9**: Archaeological temporal decline (3-panel showing 93% rat decrease)
 - **Figure 10**: Rat percentages across all excavations  
 - **Figure 11**: High variability in rat abundance (coefficient of variation)
-- **Figure 12 & 13**: Ecological collapse - rat population vs palm forest decline
+- **Figure 12**: Normalized population dynamics (rats-only scenario, colorblind-friendly)
+- **Figure 13**: Palm decline comparison with human population (colorblind-friendly)
+
+**Note on Accessibility**: Figures 12 and 13 have been updated with colorblind-friendly colors and different line styles (solid, dashed, dotted) to ensure accessibility for readers with color vision deficiencies.
 
 To regenerate paper figures:
 ```bash
