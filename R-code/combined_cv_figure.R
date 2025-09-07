@@ -197,10 +197,16 @@ text(bar_positions, cv_results$CV + 8,
 
 # Add reference lines with labels
 abline(h = 40, lty = 2, col = "blue", lwd = 2)
-text(0.5, 45, "Steady accumulation threshold", col = "blue", cex = 0.8, adj = 0)
-
 abline(h = 100, lty = 2, col = "red", lwd = 2)
-text(0.5, 105, "Episodic deposition threshold", col = "red", cex = 0.8, adj = 0)
+
+# Place labels in upper right corner where they're clearly visible
+legend("topright", 
+       c("Steady accumulation (CV<40%)", "Episodic deposition (CV>100%)"),
+       col = c("blue", "red"),
+       lty = 2,
+       lwd = 2,
+       bty = "n",
+       cex = 0.8)
 
 # Add sample size annotations for bootstrap excavations
 text(bar_positions[1], 170, "n=2", cex = 0.7)
@@ -310,8 +316,14 @@ for(i in which(cv_results$Has_CI)) {
 abline(h = 40, lty = 2, col = "blue", lwd = 1.5)
 abline(h = 100, lty = 2, col = "red", lwd = 1.5)
 
-text(0.7, 45, "Steady accumulation", col = "blue", cex = 0.9, adj = 0)
-text(0.7, 105, "Episodic deposition", col = "red", cex = 0.9, adj = 0)
+# Place threshold labels in a legend for clarity
+legend("topleft",
+       c("Steady accumulation (CV<40%)", "Episodic deposition (CV>100%)"),
+       col = c("blue", "red"),
+       lty = 2,
+       lwd = 1.5,
+       bty = "n",
+       cex = 0.8)
 
 # Add statistical annotation
 text(bar_pos[5], 150, "p < 0.001***", cex = 0.8)
