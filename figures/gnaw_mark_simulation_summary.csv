@@ -1,0 +1,6 @@
+"Analysis","Percent_Without_Gnaw_Marks","N_Simulations"
+"Main simulation",80.641,10000
+"Small fragments (1-5%)",80.266,5000
+"Medium fragments (5-10%)",80.064,5000
+"Large fragments (10-20%)",80.052,5000
+"Intensive predation scenario",81.072,5000
