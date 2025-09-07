@@ -195,15 +195,15 @@ text(bar_positions, cv_results$CV + 8,
      round(cv_results$CV, 0), 
      font = 2, cex = 0.9)
 
-# Add reference lines with labels
-abline(h = 40, lty = 2, col = "blue", lwd = 2)
-abline(h = 100, lty = 2, col = "red", lwd = 2)
+# Add reference lines with colorblind-friendly colors and different patterns
+abline(h = 40, lty = 3, col = "#0173B2", lwd = 2)  # Dark blue with dotted line
+abline(h = 100, lty = 2, col = "#DE8F05", lwd = 2)  # Orange with dashed line
 
 # Place labels in upper right corner where they're clearly visible
 legend("topright", 
        c("Steady accumulation (CV<40%)", "Episodic deposition (CV>100%)"),
-       col = c("blue", "red"),
-       lty = 2,
+       col = c("#0173B2", "#DE8F05"),
+       lty = c(3, 2),  # Different line types: dotted and dashed
        lwd = 2,
        bty = "n",
        cex = 0.8)
@@ -239,8 +239,9 @@ text(c(0.7, 1.9, 3.1), taxa_cv$CV + 5,
 # =============================================================================
 
 par(mar = c(4, 4, 3, 1))
+# Use colorblind-friendly colors for histograms
 hist(steady_null, breaks = 30, 
-     col = rgb(0, 0, 1, 0.3),
+     col = rgb(1/255, 115/255, 178/255, 0.3),  # Dark blue with transparency
      xlim = c(0, 180),
      main = "B. Null Model Test",
      xlab = "CV (%)",
@@ -248,14 +249,14 @@ hist(steady_null, breaks = 30,
      cex.main = 0.9)
 
 hist(episodic_null, breaks = 30, 
-     col = rgb(1, 0, 0, 0.3), 
+     col = rgb(222/255, 143/255, 5/255, 0.3),  # Orange with transparency
      add = TRUE)
 
 abline(v = observed_cv, col = "black", lwd = 3)
 
 legend("topright", 
        c("Steady", "Episodic", "Observed"),
-       fill = c(rgb(0,0,1,0.3), rgb(1,0,0,0.3), "black"),
+       fill = c(rgb(1/255, 115/255, 178/255, 0.3), rgb(222/255, 143/255, 5/255, 0.3), "black"),
        bty = "n", cex = 0.7)
 
 # =============================================================================
@@ -312,15 +313,15 @@ for(i in which(cv_results$Has_CI)) {
   }
 }
 
-# Reference lines
-abline(h = 40, lty = 2, col = "blue", lwd = 1.5)
-abline(h = 100, lty = 2, col = "red", lwd = 1.5)
+# Reference lines with colorblind-friendly colors and different patterns
+abline(h = 40, lty = 3, col = "#0173B2", lwd = 1.5)  # Dark blue with dotted line
+abline(h = 100, lty = 2, col = "#DE8F05", lwd = 1.5)  # Orange with dashed line
 
 # Place threshold labels in a legend for clarity
 legend("topleft",
        c("Steady accumulation (CV<40%)", "Episodic deposition (CV>100%)"),
-       col = c("blue", "red"),
-       lty = 2,
+       col = c("#0173B2", "#DE8F05"),
+       lty = c(3, 2),  # Different line types: dotted and dashed
        lwd = 1.5,
        bty = "n",
        cex = 0.8)
